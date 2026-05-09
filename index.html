@@ -1,11 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conquête des Territoires</title>
-</head>
-<body>
-    
-</body>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conquête des Territoires</title>
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a0a0d'/><text x='50%25' y='54%25' font-size='42' text-anchor='middle' dominant-baseline='middle'>⚔️</text></svg>">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/index.css">
+    </head>
+    <body>
+        <!-- Menu Screen  -->
+        <div id="screen-menu">
+            <div class="menu-sparks" aria-hidden="true">
+                <div class="menu-spark" style="--dur:7s;--delay:0s;--drift:18px;left:12%"></div>
+                <div class="menu-spark" style="--dur:9s;--delay:1.2s;--drift:-14px;left:28%"></div>
+                <div class="menu-spark" style="--dur:6s;--delay:2.5s;--drift:22px;left:45%"></div>
+                <div class="menu-spark" style="--dur:11s;--delay:.4s;--drift:-20px;left:62%"></div>
+                <div class="menu-spark" style="--dur:8s;--delay:3.1s;--drift:10px;left:78%"></div>
+                <div class="menu-spark" style="--dur:10s;--delay:1.8s;--drift:-25px;left:90%"></div>
+                <div class="menu-spark" style="--dur:7.5s;--delay:4s;--drift:16px;left:35%"></div>
+                <div class="menu-spark" style="--dur:9.5s;--delay:.9s;--drift:-12px;left:55%"></div>
+            </div>
+
+            <div class="menu-crest-wrap">
+                <div class="menu-crest-ring"></div>
+                <div class="menu-diamond">
+                <div class="menu-diamond-inner">⚔</div>
+                </div>
+            </div>
+
+            <div class="menu-title">Conquête</div>
+            <div class="menu-title-main">des Territoires</div>
+
+            <div class="menu-slash">
+                <div class="menu-slash-line"></div>
+                <div class="menu-slash-gem sm"></div>
+                <div class="menu-slash-gem"></div>
+                <div class="menu-slash-gem sm"></div>
+                <div class="menu-slash-line rev"></div>
+            </div>
+
+            <div class="menu-btns">
+                <button class="menu-btn primary" onclick="startSetup('ai')">
+                    <span class="menu-btn-icon">⚔</span>
+                    <span class="menu-btn-label">Joueur contre Ordinateur</span>
+                    <span class="menu-btn-tag">IA</span>
+                </button>
+                <button class="menu-btn secondary" onclick="startSetup('pvp')">
+                    <span class="menu-btn-icon">👥</span>
+                    <span class="menu-btn-label">Joueur contre Joueur</span>
+                    <span class="menu-btn-tag">PVP</span>
+                </button>
+                <button class="menu-btn secondary" onclick="showRules()">
+                    <span class="menu-btn-icon">📖</span>
+                    <span class="menu-btn-label">Règles du Jeu</span>
+                    <span class="menu-btn-tag">?</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- RULES -->
+        <div id="screen-rules">
+            <div style="padding:1.5rem 0 .8rem;text-align:center">
+                <div style="font-family:Cinzel,serif;font-size:1.5rem;color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.14em">Règles du Jeu</div>
+            </div>
+            <div class="rules-box">
+                <h2>⚔ Conquête des Territoires</h2>
+                <h3>Objectif</h3>
+                <p>Contrôler <strong>33 cases ou plus</strong> (majorité sur 64) ou éliminer toutes les unités ennemies.</p>
+                <h3>Phase de Déploiement</h3>
+                <p>Avant la partie, chaque joueur place librement ses 5 unités dans ses <strong>2 rangées de départ</strong>. L'IA place les siennes aléatoirement.</p>
+                <h3>Tour de Jeu</h3>
+                <ul>
+                    <li>Les tours <strong>alternent</strong> entre les deux joueurs.</li>
+                    <li>En début de tour, <strong>les deux dés sont lancés simultanément</strong>.</li>
+                    <li>Le joueur actif sélectionne <strong>une seule unité</strong> et effectue une action.</li>
+                </ul>
+                <h3>Dé de Tour — Buff &amp; Malus</h3>
+                <p><strong>Buff (votre dé) :</strong></p>
+                <ul>
+                    <li>1–2 → <strong>+1 Force</strong></li>
+                    <li>3–4 → <strong>+1 HP</strong> (sans dépasser le maximum)</li>
+                    <li>5–6 → <strong>+2 Force</strong></li>
+                </ul>
+                <p><strong>Malus (si dé adverse &gt; votre dé) :</strong> La différence est soustraite à votre Force lors des attaques.</p>
+                <h3>Unités</h3>
+                <div class="unit-row"><span class="ubadge S">S</span><strong>Soldat</strong> — Force 3 · Vie 3 · Mvt 1. Déplacement en 8 directions. Tir vertical jusqu'à 3 cases.</div>
+                <div class="unit-row"><span class="ubadge C">C</span><strong>Cavalier</strong> — Force 2 · Vie 5 · Mvt 2 ortho ou 1 diagonal.</div>
+                <div class="unit-row"><span class="ubadge T">T</span><strong>Tank</strong> — Force 5 · Vie 8 · Mvt 1. Attaque sur toute la ligne/colonne.</div>
+                <h3>Actions</h3>
+                <ul>
+                    <li><span class="key">Clic gauche</span> = <strong>Déplacer</strong></li>
+                    <li><span class="key">Clic droit</span> = <strong>Attaquer</strong></li>
+                </ul>
+                <h3>Combat</h3>
+                <ul>
+                    <li><strong>Score Attaquant</strong> = Force effective + dé (1–6) + bonus case</li>
+                    <li><strong>Score Défenseur</strong> = Force + dé (1–6) + bonus case</li>
+                    <li>Dégâts plafonés à ceil(HP max / 2) − 1 (anti one-shot)</li>
+                    <li>Attaque à distance: dégâts normaux mais pas de capture de case</li>
+                </ul>
+                <h3>Cases Spéciales (cachées)</h3>
+                <ul>
+                    <li><span style="color:var(--bon-b)">★ Bonus (×2)</span> — +1 ATK et DEF</li>
+                    <li><span style="color:var(--trp-b)">⚠ Piège (×2)</span> — −1 HP à l'entrée</li>
+                    <li><span style="color:var(--gold)">✦ Portail Allié (×1)</span> — Copie l'unité à votre base</li>
+                    <li><span style="color:var(--p2l)">☠ Portail Ennemi (×1)</span> — Copie l'unité à la base ennemie</li>
+                </ul>
+            </div>
+            <div style="margin-top:1rem;"><button class="btn gold" onclick="showMenu()">← Retour au Menu</button></div>
+        </div>
+
+
+        <!-- SETUP -->
+        <div id="screen-setup">
+            <div class="orn"><div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line"></div></div>
+            <div class="setup-title" id="setup-title">Déploiement — Joueur 1</div>
+            <div class="setup-sub" id="setup-sub">Placez vos 5 unités sur vos cases de départ</div>
+            <div class="orn"><div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line"></div></div>
+            <div class="setup-layout">
+                <div class="setup-panel">
+                <div class="setup-panel-title">Unités à placer</div>
+                <div class="piece-tray" id="piece-tray"></div>
+                <div style="margin-top:.8rem;font-size:.65rem;color:var(--dim);line-height:1.6">
+                    <div>Cliquez une pièce,<br>puis une case colorée.</div>
+                    <div style="margin-top:.4rem">Cliquez une pièce<br>placée pour la retirer.</div>
+                </div>
+                </div>
+                <div class="setup-grid-wrap">
+                    <div class="setup-grid" id="setup-grid"></div>
+                    <div class="setup-info" id="setup-info">Sélectionnez une pièce dans le panneau gauche.</div>
+                    <div class="setup-actions">
+                        <button class="btn" onclick="resetSetup()">↺ Réinitialiser</button>
+                        <button class="btn gold" id="btn-setup-confirm" onclick="confirmSetup()" disabled>✓ Confirmer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME -->
+        <div id="screen-game">
+            <div class="game-header">
+                <div class="game-title">Conquête des Territoires</div>
+                <div class="game-mode-tag" id="mode-tag">Joueur contre Ordinateur</div>
+                <div class="orn" style="margin:.3rem 0"><div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line"></div></div>
+            </div>
+            <div class="game-layout">
+                <!-- Left: P1 -->
+                <div class="spanel">
+                <div class="card cp1">
+                    <div class="card-label" id="left-label">Joueur 1</div>
+                    <div class="pname p1" id="left-name">▲ JOUEUR 1</div>
+                    <div class="obj-display">
+                    <div class="obj-row">
+                        <span class="obj-num p1" id="left-t">16</span>
+                        <span class="obj-slash">/</span>
+                        <span class="obj-goal">33</span>
+                    </div>
+                    <div class="obj-label">Objectif: contrôler 33 cases</div>
+                    <div class="pbar"><div class="pbar-fill p1" id="left-bar" style="width:0%"></div></div>
+                    <div class="pbar-label"><span id="left-pct">0%</span><span>100% = 33</span></div>
+                    </div>
+                </div>
+                <div class="card cp1">
+                    <div class="card-label">Unités</div>
+                    <div class="ulist" id="left-ul"></div>
+                </div>
+                <div class="card cg">
+                    <div class="card-label">Légende</div>
+                    <div style="font-size:.64rem;color:var(--dim);line-height:1.95">
+                    <div><span style="font-family:Cinzel;color:var(--p1)">S</span> Soldat — F3 HP3</div>
+                    <div><span style="font-family:Cinzel;color:var(--gold)">C</span> Cavalier — F2 HP5</div>
+                    <div><span style="font-family:Cinzel;color:var(--p2)">T</span> Tank — F5 HP8</div>
+                    <div><span style="color:var(--bon-b)">★</span> Bonus (+1 ATK/DEF)</div>
+                    <div><span style="color:var(--trp-b)">⚠</span> Piège (−1 HP)</div>
+                    <div><span style="color:var(--gold)">✦</span> Portail Allié</div>
+                    <div><span style="color:var(--p2l)">☠</span> Portail Ennemi</div>
+                    </div>
+                </div>
+                </div>
+                <!-- Center -->
+                <div class="ccol">
+                <div class="tbanner">
+                    <div class="tlabel2">Tour <span id="turn-num">1</span></div>
+                    <div class="tplayer p1" id="turn-pname">▲ JOUEUR 1</div>
+                    <div class="tphase" id="turn-phase">Lancez le dé de tour</div>
+                </div>
+                <div class="dice-zone">
+                    <div class="dice-player">
+                    <div class="dice-player-label" id="dp1-lbl">Joueur 1</div>
+                    <div class="dice-face p1" id="die1">—</div>
+                    <div class="dice-buff" id="die1-buff"></div>
+                    </div>
+                    <div class="dice-sep">VS</div>
+                    <div class="dice-player">
+                    <div class="dice-player-label" id="dp2-lbl">Joueur 2</div>
+                    <div class="dice-face p2" id="die2">—</div>
+                    <div class="dice-buff" id="die2-buff"></div>
+                    </div>
+                </div>
+                <div class="board-wrap">
+                    <div class="col-labels">
+                    <div class="col-lbl">A</div><div class="col-lbl">B</div><div class="col-lbl">C</div>
+                    <div class="col-lbl">D</div><div class="col-lbl">E</div><div class="col-lbl">F</div>
+                    <div class="col-lbl">G</div><div class="col-lbl">H</div>
+                    </div>
+                    <div class="board-row-wrap">
+                    <div class="row-labels">
+                        <div class="row-lbl">8</div><div class="row-lbl">7</div><div class="row-lbl">6</div>
+                        <div class="row-lbl">5</div><div class="row-lbl">4</div><div class="row-lbl">3</div>
+                        <div class="row-lbl">2</div><div class="row-lbl">1</div>
+                    </div>
+                    <div class="grid" id="game-grid"></div>
+                    </div>
+                </div>
+                <div class="istrip" id="istrip">Prêt.</div>
+                <div class="chint">
+                    <span><span class="key">Clic gauche</span> = déplacer</span>
+                    &nbsp;|&nbsp;
+                    <span><span class="key">Clic droit</span> = attaquer</span>
+                </div>
+                <div class="abar">
+                    <button class="btn gold" id="btn-dice" onclick="rollTurnDice()" disabled>🎲 Lancer les dés</button>
+                    <button class="btn" onclick="showMenu()">← Menu</button>
+                </div>
+                <div class="legend">
+                    <div class="li"><div class="ld" style="background:rgba(74,158,255,.1);border-color:var(--p1)"></div>Joueur 1</div>
+                    <div class="li"><div class="ld" style="background:rgba(255,107,74,.1);border-color:var(--p2)"></div>J2 / IA</div>
+                    <div class="li"><div class="ld" style="background:var(--bon);border-color:var(--bon-b)"></div>Bonus</div>
+                    <div class="li"><div class="ld" style="background:var(--trp);border-color:var(--trp-b)"></div>Piège</div>
+                    <div class="li"><div class="ld" style="background:rgba(201,168,76,.12);border-color:var(--gold)"></div>Portail</div>
+                </div>
+                </div>
+                <!-- Right: P2 -->
+                <div class="spanel">
+                <div class="card cp2">
+                    <div class="card-label" id="right-label">Ordinateur</div>
+                    <div class="pname p2" id="right-name">▼ ORDINATEUR</div>
+                    <div class="obj-display">
+                    <div class="obj-row">
+                        <span class="obj-num p2" id="right-t">16</span>
+                        <span class="obj-slash">/</span>
+                        <span class="obj-goal">33</span>
+                    </div>
+                    <div class="obj-label">Objectif: contrôler 33 cases</div>
+                    <div class="pbar"><div class="pbar-fill p2" id="right-bar" style="width:0%"></div></div>
+                    <div class="pbar-label"><span id="right-pct">0%</span><span>100% = 33</span></div>
+                    </div>
+                </div>
+                <div class="card cp2">
+                    <div class="card-label">Unités</div>
+                    <div class="ulist" id="right-ul"></div>
+                </div>
+                <div class="card cg">
+                    <div class="card-label">Journal</div>
+                    <div class="logbox" id="logbox"></div>
+                </div>
+                <div class="card cg">
+                    <div class="card-label">Statistiques</div>
+                    <div style="font-size:.67rem;color:var(--dim);line-height:1.95">
+                    <div>Tours: <span id="st-t">0</span></div>
+                    <div>Captures J1: <span id="st-c1" style="color:var(--p1l)">0</span></div>
+                    <div>Captures J2: <span id="st-c2" style="color:var(--p2l)">0</span></div>
+                    <div>Combats: <span id="st-b">0</span></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initiative roll Modal -->
+        <div id="init-overlay">
+            <div class="init-box">
+                <div class="init-title">🎲 Tirage d'Initiative</div>
+                <div class="init-sub">
+                Lancez les dés pour décider qui joue en premier.<br>
+                Le dé le plus haut remporte l'initiative.
+                </div>
+                <div class="init-dice-row">
+                <div class="init-die-wrap">
+                    <div class="init-die-lbl" id="init-lbl1">Joueur 1</div>
+                    <div class="init-die p1c" id="init-d1">—</div>
+                </div>
+                <div class="init-vs">VS</div>
+                <div class="init-die-wrap">
+                    <div class="init-die-lbl" id="init-lbl2">Joueur 2</div>
+                    <div class="init-die p2c" id="init-d2">—</div>
+                </div>
+                </div>
+                <div class="init-result" id="init-result"></div>
+                <button class="btn gold" id="btn-init-roll" onclick="rollInitiative()">🎲 Lancer</button>
+            </div>
+        </div>
+
+        <!-- Win modal -->
+        <div class="modal-ov" id="win-modal">
+            <div class="modal">
+                <div class="ico" id="win-ico">🏆</div>
+                <h2 id="win-title"></h2>
+                <p id="win-winner" style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.08em;margin-bottom:.3rem;"></p>
+                <p id="win-msg"></p>
+                <div class="mbtn-row">
+                    <button class="btn gold" onclick="restartSameMode()">↺ Rejouer</button>
+                    <button class="btn" onclick="showMenu()">⌂ Menu</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
 </html>
