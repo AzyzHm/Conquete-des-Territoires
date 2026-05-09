@@ -1,0 +1,52 @@
+/* Screen container */
+#screen-game{position:relative;z-index:1;display:none;flex-direction:column;align-items:center;width:100%;padding-bottom:2rem;}
+
+/* Header */
+.game-header{text-align:center;padding:1rem 1rem .6rem;width:100%;}
+.game-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,1.8rem);font-weight:900;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;}
+.game-mode-tag{font-size:.7rem;color:var(--dim);font-style:italic;margin-top:.15rem;letter-spacing:.06em;}
+
+/* Three-column layout */
+.game-layout{display:grid;grid-template-columns:180px auto 180px;gap:.9rem;padding:0 .8rem;max-width:870px;width:100%;align-items:start;}
+.spanel{display:flex;flex-direction:column;gap:.6rem;}
+
+/* Card widget */
+.card{background:var(--bg2);border:1px solid var(--br);border-radius:4px;padding:.65rem;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.card.cp1::before{background:linear-gradient(90deg,transparent,var(--p1),transparent);}
+.card.cp2::before{background:linear-gradient(90deg,transparent,var(--p2),transparent);}
+.card.cg::before{background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.card-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.38rem;}
+.pname{font-family:'Cinzel',serif;font-size:.84rem;font-weight:700;margin-bottom:.1rem;}
+.pname.p1{color:var(--p1);}.pname.p2{color:var(--p2);}
+
+/* Objective / progress bar */
+.obj-display{margin-top:.3rem;}
+.obj-row{display:flex;align-items:baseline;gap:.3rem;margin-bottom:.18rem;}
+.obj-num{font-size:1.6rem;font-weight:600;line-height:1;}
+.obj-num.p1{color:var(--p1l);}.obj-num.p2{color:var(--p2l);}
+.obj-slash{font-size:.85rem;color:var(--dim);}
+.obj-goal{font-size:.85rem;color:var(--dim);}
+.obj-label{font-size:.63rem;color:var(--dim);font-style:italic;}
+.pbar{height:5px;background:var(--br);border-radius:3px;margin-top:.35rem;overflow:hidden;position:relative;}
+.pbar::after{content:'';position:absolute;right:0;top:0;width:2px;height:100%;background:var(--gold);opacity:.4;}
+.pbar-fill{height:100%;border-radius:3px;transition:width .5s;}
+.pbar-fill.p1{background:linear-gradient(90deg,var(--p1),var(--p1l));}
+.pbar-fill.p2{background:linear-gradient(90deg,var(--p2),var(--p2l));}
+.pbar-label{display:flex;justify-content:space-between;font-size:.55rem;color:var(--dim);margin-top:.18rem;}
+
+/* Unit list (side panels) */
+.ulist{display:flex;flex-direction:column;gap:.2rem;}
+.urow{display:flex;align-items:center;gap:.28rem;font-size:.68rem;color:var(--dim);padding:.15rem .2rem;border-radius:3px;}
+.ub{width:16px;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.55rem;font-weight:700;flex-shrink:0;}
+.ub.p1{background:rgba(74,158,255,.18);color:var(--p1);border:1px solid var(--p1);}
+.ub.p2{background:rgba(255,107,74,.18);color:var(--p2);border:1px solid var(--p2);}
+.hp-bar{height:3px;background:var(--br);border-radius:2px;overflow:hidden;width:36px;flex-shrink:0;}
+.hp-fill{height:100%;border-radius:2px;transition:width .3s;}
+.hp-fill.hi{background:var(--ok);}.hp-fill.mid{background:var(--gold);}.hp-fill.low{background:var(--ng);}
+
+/* Combat log (.logbox) */
+.logbox{background:var(--bg1);border:1px solid var(--br);border-radius:4px;padding:.45rem;max-height:170px;overflow-y:auto;font-size:.66rem;color:var(--dim);line-height:1.5;}
+.logbox::-webkit-scrollbar{width:3px;}.logbox::-webkit-scrollbar-thumb{background:var(--gold-d);border-radius:2px;}
+.le{margin-bottom:.15rem;padding-bottom:.15rem;border-bottom:1px solid rgba(255,255,255,.03);}
+.le.p1{color:var(--p1l);}.le.p2{color:var(--p2l);}.le.sys{color:var(--gold);font-style:italic;}.le.cap{color:var(--ok);}.le.dmg{color:var(--ng);}

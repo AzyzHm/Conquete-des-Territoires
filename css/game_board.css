@@ -1,0 +1,47 @@
+/* Board coordinate labels */
+.board-wrap{display:flex;flex-direction:column;align-items:flex-start;}
+.col-labels{display:flex;padding-left:18px;}
+.col-lbl{width:60px;text-align:center;font-family:'Cinzel',serif;font-size:.52rem;color:var(--dim);letter-spacing:.06em;line-height:1.8;}
+.board-row-wrap{display:flex;align-items:stretch;}
+.row-labels{display:flex;flex-direction:column;justify-content:space-around;padding-right:3px;}
+.row-lbl{height:62px;display:flex;align-items:center;justify-content:flex-end;font-family:'Cinzel',serif;font-size:.52rem;color:var(--dim);line-height:1;width:15px;}
+
+/* Game grid */
+/* 8×8 CSS grid; gap colour (--br) acts as gridlines. */
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;background:var(--br);border:2px solid var(--br);border-radius:4px;overflow:hidden;box-shadow:var(--shd);}
+.cell{width:58px;height:58px;background:var(--bg3);position:relative;cursor:pointer;transition:background .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;overflow:hidden;user-select:none;}
+.cell::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .15s;background:rgba(255,255,255,.04);}
+.cell:hover::before{opacity:1;}
+
+/* Ownership colour strip (2px top border) */
+.cstrip{position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s;}
+.cell.op1{background:rgba(74,158,255,.09);}.cell.op1 .cstrip{background:var(--p1);opacity:.8;}
+.cell.op2{background:rgba(255,107,74,.09);}.cell.op2 .cstrip{background:var(--p2);opacity:.8;}
+
+/* Special square tints + icons */
+.cell.cbon{background:var(--bon);}.cell.cbon::after{content:'★';position:absolute;bottom:2px;right:3px;font-size:.46rem;color:var(--bon-b);opacity:.7;}
+.cell.ctrp{background:var(--trp);}.cell.ctrp::after{content:'⚠';position:absolute;bottom:2px;right:3px;font-size:.44rem;color:var(--trp-b);opacity:.7;}
+.cell.cspawn{background:rgba(201,168,76,.12);}.cell.cspawn::after{content:'✦';position:absolute;bottom:2px;right:3px;font-size:.46rem;color:var(--gold);opacity:.8;}
+.cell.cctr{background:rgba(255,74,107,.12);}.cell.cctr::after{content:'☠';position:absolute;bottom:2px;right:3px;font-size:.46rem;color:var(--p2);opacity:.85;}
+
+/* Selection & reachability states */
+.cell.csel{outline:2px solid var(--gold);outline-offset:-2px;z-index:2;}
+.cell.rch{outline:2px solid rgba(74,158,255,.85);outline-offset:-2px;background:rgba(74,158,255,.12);animation:rpm 1.2s infinite;}
+.cell.rch.foe{outline-color:rgba(255,107,74,.9);background:rgba(255,107,74,.12);animation:rpa 1.2s infinite;}
+@keyframes rpm{0%,100%{outline-color:rgba(74,158,255,.7);}50%{outline-color:rgba(74,158,255,1);}}
+@keyframes rpa{0%,100%{outline-color:rgba(255,107,74,.8);}50%{outline-color:rgba(255,107,74,1);}}
+
+/* Tiny "MV" / "ATK" hint inside reachable cells */
+.chint2{position:absolute;bottom:1px;left:0;right:0;text-align:center;font-size:.33rem;color:rgba(255,255,255,.28);font-family:'Cinzel',serif;pointer-events:none;}
+
+/* ── Unit tokens ────────────────────────────────────────────── */
+.ustk{display:flex;flex-wrap:wrap;gap:1px;justify-content:center;align-items:center;max-width:52px;}
+.utok{position:relative;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.56rem;font-weight:700;flex-shrink:0;border:1.5px solid transparent;transition:transform .2s;}
+.utok.p1{background:rgba(74,158,255,.28);color:var(--p1l);border-color:var(--p1);}
+.utok.p2{background:rgba(255,107,74,.28);color:var(--p2l);border-color:var(--p2);}
+.utok.sel{box-shadow:0 0 8px 2px var(--gold);}
+
+/* HP track under each token */
+.tok-hp{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:18px;height:3px;background:var(--br);border-radius:2px;overflow:hidden;}
+.tok-hp-fill{height:100%;border-radius:2px;transition:width .3s;}
+.tok-hp-fill.hi{background:var(--ok);}.tok-hp-fill.mid{background:var(--gold);}.tok-hp-fill.low{background:var(--ng);}
