@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+  --gold:#c9a84c;--gold-l:#e8c96a;--gold-d:#8a6f2e;
+  --bg0:#0a0a0d;--bg1:#111115;--bg2:#17171d;--bg3:#1d1d25;
+  --br:#28283a;
+  --p1:#4a9eff;--p1l:#7dbaff;
+  --p2:#ff6b4a;--p2l:#ff9a80;
+  --ok:#4aff8a;--ng:#ff4a6b;
+  --txt:#e8e0d0;--dim:#8888a0;
+  --bon:#4aff8a18;--bon-b:#4aff8a;  /* bonus square fill + border */
+  --trp:#ff4a6b18;--trp-b:#ff4a6b;  /* trap square fill + border */
+  --shd:0 4px 40px rgba(0,0,0,.85);  /* card drop shadow */
+}
+
+body{
+    background:var(--bg0);
+    color:var(--txt);
+    font-family:'Crimson Text',serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:radial-gradient(ellipse 70% 50% at 15% 15%,rgba(74,158,255,.05) 0%,transparent 60%),
+             radial-gradient(ellipse 70% 50% at 85% 85%,rgba(255,107,74,.05) 0%,transparent 60%);
+}
