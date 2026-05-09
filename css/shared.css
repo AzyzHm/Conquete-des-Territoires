@@ -1,0 +1,15 @@
+/* A horizontal row of: faded line — gold diamond — faded line.
+   Used to visually separate sections on the setup and rules screens. */
+.orn{display:flex;align-items:center;gap:.8rem;justify-content:center;margin:.4rem 0;}
+.orn-line{height:1px;width:90px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent);}
+.orn-dot{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+
+/* Shared button styles (.btn) */
+.btn{font-family:'Cinzel',serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  border:1px solid var(--br);border-radius:4px;background:var(--bg2);color:var(--dim);
+  transition:all .2s;font-size:.7rem;font-weight:700;padding:.45rem 1.1rem;}
+.btn:hover:not(:disabled){border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.07);}
+.btn:disabled{opacity:.35;cursor:not-allowed;}
+.btn.gold{border-color:var(--gold-d);color:var(--gold);background:rgba(201,168,76,.12);}
+.btn.gold:hover:not(:disabled){background:rgba(201,168,76,.22);box-shadow:0 0 18px rgba(201,168,76,.2);}
+.btn.big{font-size:.85rem;padding:.75rem 2rem;letter-spacing:.15em;}

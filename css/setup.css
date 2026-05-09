@@ -1,0 +1,55 @@
+#screen-setup{
+    position:relative;
+    z-index:1;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    padding:1.5rem 1rem 2rem;
+    width:100%;
+}
+
+.setup-title{font-family:'Cinzel',serif;font-size:clamp(1rem,3vw,1.6rem);font-weight:900;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;text-align:center;}
+.setup-sub{font-size:.8rem;color:var(--dim);font-style:italic;margin:.3rem 0 1rem;text-align:center;}
+.setup-layout{display:grid;grid-template-columns:160px auto;gap:1.2rem;max-width:640px;width:100%;align-items:start;}
+.setup-panel{background:var(--bg2);border:1px solid var(--br);border-radius:4px;padding:.8rem;}
+.setup-panel-title{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
+
+/* Piece tray */
+.piece-tray{display:flex;flex-direction:column;gap:.5rem;}
+.tray-item{display:flex;align-items:center;gap:.5rem;padding:.35rem .5rem;border-radius:4px;border:1px solid var(--br);background:var(--bg3);cursor:grab;transition:all .2s;user-select:none;}
+.tray-item:hover{border-color:var(--gold);background:rgba(201,168,76,.06);}
+.tray-item.selected{border-color:var(--gold);background:rgba(201,168,76,.1);box-shadow:0 0 10px rgba(201,168,76,.2);}
+.tray-item.depleted{opacity:.35;cursor:not-allowed;}
+.tray-badge{width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.7rem;font-weight:700;flex-shrink:0;}
+.tray-badge.S{background:rgba(74,158,255,.2);color:var(--p1);border:1px solid var(--p1);}
+.tray-badge.C{background:rgba(201,168,76,.2);color:var(--gold);border:1px solid var(--gold);}
+.tray-badge.T{background:rgba(255,107,74,.2);color:var(--p2);border:1px solid var(--p2);}
+.tray-info{font-size:.7rem;color:var(--dim);line-height:1.4;}
+.tray-count{font-size:.65rem;color:var(--dim);margin-left:auto;font-family:'Cinzel',serif;}
+
+/* Setup grid */
+.setup-grid-wrap{display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+.setup-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;background:var(--br);border:2px solid var(--br);border-radius:4px;overflow:hidden;}
+.sg-cell{width:52px;height:52px;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;cursor:default;transition:background .15s;user-select:none;}
+.sg-cell.zone-p1{background:rgba(74,158,255,.07);cursor:pointer;}
+.sg-cell.zone-p2{background:rgba(255,107,74,.07);}
+.sg-cell.zone-p1:hover{background:rgba(74,158,255,.15);}
+.sg-cell.zone-p2:hover{background:rgba(255,107,74,.15);}
+
+/* Pulsing dashed outline on valid empty cells when a unit type is selected */
+.sg-cell.zone-p1.can-place{outline:2px dashed rgba(74,158,255,.6);outline-offset:-2px;animation:blink .9s infinite;}
+.sg-cell.zone-p2.can-place{outline:2px dashed rgba(255,107,74,.6);outline-offset:-2px;animation:blinkr .9s infinite;}
+@keyframes blink{0%,100%{outline-color:rgba(74,158,255,.4);}50%{outline-color:rgba(74,158,255,.9);}}
+@keyframes blinkr{0%,100%{outline-color:rgba(255,107,74,.4);}50%{outline-color:rgba(255,107,74,.9);}}
+.sg-cell.locked{background:rgba(0,0,0,.3);cursor:not-allowed;}
+
+/* Placed unit token in the setup grid */
+.sg-tok{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.68rem;font-weight:700;border:2px solid transparent;cursor:pointer;transition:transform .2s;}
+.sg-tok.p1{background:rgba(74,158,255,.3);color:var(--p1l);border-color:var(--p1);}
+.sg-tok.p2{background:rgba(255,107,74,.3);color:var(--p2l);border-color:var(--p2);}
+.sg-tok:hover{transform:scale(1.15);}
+
+/* Setup actions & status bar */
+.setup-actions{display:flex;gap:.6rem;margin-top:.8rem;justify-content:center;flex-wrap:wrap;}
+/* Status bar below the grid: placement count + context hints */
+.setup-info{font-size:.75rem;color:var(--dim);font-style:italic;text-align:center;padding:.3rem .5rem;background:var(--bg2);border:1px solid var(--br);border-radius:4px;min-height:1.8rem;display:flex;align-items:center;justify-content:center;width:100%;}

@@ -1,0 +1,24 @@
+#screen-rules{
+    position:relative;
+    z-index:1;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    padding:2rem 1rem 3rem;
+    max-width:700px;
+    width:100%;
+    margin:0 auto;
+}
+
+.rules-box{background:var(--bg2);border:1px solid var(--br);border-radius:6px;padding:1.8rem 2rem;width:100%;box-shadow:var(--shd);}
+.rules-box h2{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:1rem;letter-spacing:.1em;}
+.rules-box h3{font-family:'Cinzel',serif;font-size:.82rem;color:var(--p1l);margin:.9rem 0 .35rem;letter-spacing:.08em;text-transform:uppercase;}
+.rules-box p,.rules-box li{font-size:.85rem;color:var(--dim);line-height:1.7;margin-bottom:.25rem;}
+.rules-box ul{padding-left:1.2rem;}
+.rules-box .unit-row{display:flex;align-items:center;gap:.6rem;margin:.3rem 0;font-size:.82rem;color:var(--dim);}
+
+/* Unit badge used in rule text rows */
+.ubadge{width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.7rem;font-weight:700;flex-shrink:0;}
+.ubadge.S{background:rgba(74,158,255,.2);color:var(--p1);border:1px solid var(--p1);}
+.ubadge.C{background:rgba(201,168,76,.2);color:var(--gold);border:1px solid var(--gold);}
+.ubadge.T{background:rgba(255,107,74,.2);color:var(--p2);border:1px solid var(--p2);}
