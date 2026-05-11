@@ -9,11 +9,29 @@ export const UNIT_STATS = { // caractéristiques de chaque type d'unité
 
 export const ROSTER = ['S','S','C','C','T'];
 
-export const SPECIAL_SQUARES = [ // les cases spéciales du plateau
-  { r:2, c:2, t:'bonus'   },
-  { r:2, c:5, t:'bonus'   },
-  { r:3, c:0, t:'trap'    },
-  { r:4, c:7, t:'trap'    },
-  { r:3, c:4, t:'spawn'   },
-  { r:5, c:3, t:'counter' },
-];
+
+// génère aléatoirement les cases spéciales (bonus, piège, spawn, contre) sur le plateau
+function randomSpecialSquares() {
+  const types = ['bonus', 'bonus', 'trap', 'trap', 'spawn', 'counter'];
+  const cells = [];
+
+  // construire une liste de toutes les cases possibles (hors 2 premières lignes) et les mélanger
+  const pool = [];
+  for (let r = 2; r <= 5; r++)
+    for (let c = 0; c < 8; c++)
+      pool.push({ r, c });
+
+  // Utiliser l'algorithme de Fisher-Yates pour mélanger le pool de cases
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  // prendre les 6 premières cases du pool mélangé et les associer aux types de cases spéciales
+  for (let i = 0; i < types.length; i++)
+    cells.push({ r: pool[i].r, c: pool[i].c, t: types[i] });
+
+  return cells;
+}
+
+export const SPECIAL_SQUARES = randomSpecialSquares();

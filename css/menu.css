@@ -1,4 +1,4 @@
-/* Full-screen dark canvas with two-tone battlefield glow */
+/* Écran noir intégral avec lueur bicolore évoquant un champ de bataille */
 #screen-menu{
   position:relative;
   z-index:1;
@@ -12,7 +12,7 @@
   gap:0;
 }
 
-/* Deep background layers: vignette + side battlefield glows */
+/* Couches d'arrière-plan profondes : vignette + lueurs latérales du champ de bataille */
 #screen-menu::before{
   content:'';
   position:fixed;
@@ -25,7 +25,7 @@
     radial-gradient(ellipse 100% 40% at 50% 0%,rgba(0,0,0,.6) 0%,transparent 70%);
 }
 
-/* Subtle animated diagonal grid (battle map feel) */
+/* Grille diagonale animée subtile (ambiance carte de bataille) */
 #screen-menu::after{
   content:'';
   position:fixed;
@@ -39,7 +39,7 @@
 }
 @keyframes mapScroll{0%{background-position:0 0,0 0;}100%{background-position:96px 48px,96px 48px;}}
 
-/* ── Floating ember / spark particles ──────────────────────── */
+/* Particules de braise/étincelle flottantes */
 .menu-sparks{
     position:fixed;
     inset:0;
@@ -66,7 +66,7 @@
   100%{transform:translateY(-100vh) translateX(var(--drift,20px)) scale(.3);opacity:0;}
 }
 
-/* ── Crest: diamond-shaped badge with crossed swords ───────── */
+/* Blason : insigne en forme de losange orné d’épées croisées */
 .menu-crest-wrap{
   position:relative;
   display:flex;
@@ -92,7 +92,7 @@
   0%,100%{box-shadow:0 0 20px rgba(201,168,76,.1),inset 0 0 15px rgba(201,168,76,.04);}
   50%    {box-shadow:0 0 50px rgba(201,168,76,.22),inset 0 0 25px rgba(201,168,76,.1);}
 }
-/* Corner accent dots on the diamond */
+/* Points d'accentuation aux coins du diamant */
 .menu-diamond::before,.menu-diamond::after{
   content:'';
   position:absolute;
@@ -111,7 +111,7 @@
   filter:drop-shadow(0 0 10px rgba(201,168,76,.6));
 }
 
-/* Outer rotating ring around the crest */
+/* Anneau rotatif extérieur autour de la crête */
 .menu-crest-ring{
   position:absolute;width:124px;height:124px;
   border:1px solid rgba(201,168,76,.15);
@@ -125,7 +125,7 @@
 .menu-crest-ring::after{top:auto;bottom:-5px;}
 @keyframes ringRotate{from{transform:rotate(45deg);}to{transform:rotate(405deg);}}
 
-/* ── Title with metallic gradient text ─────────────────────── */
+/* Titre avec texte à dégradé métallique */
 .menu-title{
   font-family:'Cinzel',serif;font-weight:900;text-transform:uppercase;
   text-align:center;line-height:1;z-index:1;
@@ -146,7 +146,7 @@
   margin-bottom:.15rem;
 }
 
-/* ── Slash divider: two lines with a central diamond gem ───── */
+/* Séparateur en biseau : deux lignes avec un diamant central */
 .menu-slash{
   display:flex;align-items:center;gap:.6rem;
   margin:1.1rem 0 1.5rem;z-index:1;width:100%;max-width:300px;
@@ -165,7 +165,7 @@
 }
 .menu-slash-gem.sm{width:4px;height:4px;background:rgba(201,168,76,.4);margin:0 2px;}
 
-/* ── Tactical card-style buttons ───────────────────────────── */
+/* Boutons tactiques de type carte */
 .menu-btns{display:flex;flex-direction:column;gap:.7rem;width:100%;max-width:300px;z-index:1;}
 
 .menu-btn{
@@ -177,10 +177,9 @@
   display:flex;align-items:center;gap:.75rem;
   transition:all .22s cubic-bezier(.25,.46,.45,.94);
   font-size:.82rem;text-align:left;
-  /* Skewed left edge for a tactical cut feel */
   clip-path:polygon(8px 0%,100% 0%,100% 100%,0% 100%);
 }
-/* Shimmer sweep on hover */
+/* Balayage scintillant au survol */
 .menu-btn::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.06) 50%,transparent 70%);
@@ -189,7 +188,7 @@
 }
 .menu-btn:hover::after{transform:translateX(100%);}
 
-/* Secondary (default) button */
+/* Bouton secondaire (par défaut) */
 .menu-btn.secondary{
   background:rgba(40,40,58,.9);
   border:1px solid rgba(201,168,76,.2);
@@ -202,7 +201,7 @@
   transform:translateX(5px);
   box-shadow:-5px 0 0 rgba(201,168,76,.4),0 4px 20px rgba(0,0,0,.5);
 }
-/* Primary button */
+/* Bouton principal */
 .menu-btn.primary{
   background:linear-gradient(100deg,rgba(201,168,76,.18) 0%,rgba(201,168,76,.08) 100%);
   border:1px solid rgba(201,168,76,.45);

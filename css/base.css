@@ -12,9 +12,9 @@
   --p2:#ff6b4a;--p2l:#ff9a80;
   --ok:#4aff8a;--ng:#ff4a6b;
   --txt:#e8e0d0;--dim:#8888a0;
-  --bon:#4aff8a18;--bon-b:#4aff8a;  /* bonus square fill + border */
-  --trp:#ff4a6b18;--trp-b:#ff4a6b;  /* trap square fill + border */
-  --shd:0 4px 40px rgba(0,0,0,.85);  /* card drop shadow */
+  --bon:#4aff8a18;--bon-b:#4aff8a;  /* Cases bonus */
+  --trp:#ff4a6b18;--trp-b:#ff4a6b;  /* Cases piège */
+  --shd:0 4px 40px rgba(0,0,0,.85);  /* Ombre portée des cartes */
 }
 
 body{
