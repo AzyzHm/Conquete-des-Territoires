@@ -1,4 +1,4 @@
-/* Turn banner */
+/* Le Banner du Tour */
 .ccol{display:flex;flex-direction:column;align-items:center;gap:.6rem;}
 .tbanner{background:var(--bg2);border:1px solid var(--br);border-radius:4px;padding:.38rem .9rem;text-align:center;width:100%;position:relative;overflow:hidden;}
 .tbanner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:shim 2s infinite;}
@@ -8,7 +8,7 @@
 .tplayer.p1{color:var(--p1);}.tplayer.p2{color:var(--p2);}
 .tphase{font-size:.7rem;color:var(--dim);font-style:italic;}
 
-/* Dice display */
+/* Affichage des Dés */
 .dice-zone{display:flex;align-items:center;gap:1rem;justify-content:center;width:100%;}
 .dice-player{display:flex;flex-direction:column;align-items:center;gap:.22rem;flex:1;}
 .dice-player-label{font-family:'Cinzel',serif;font-size:.58rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;}
@@ -21,19 +21,18 @@
 .dice-buff.good{color:var(--ok);}.dice-buff.nerf{color:#ffaa44;}.dice-buff.gold{color:var(--gold);}
 .dice-sep{font-family:'Cinzel',serif;font-size:.62rem;color:var(--dim);}
 
-/* Info strip */
-/* Single-line contextual message bar below the board. */
+/* Barre de message contextuelle sur une seule ligne sous le plateau. */
 .istrip{background:var(--bg2);border:1px solid var(--br);border-radius:4px;padding:.32rem .7rem;font-size:.72rem;color:var(--dim);text-align:center;width:100%;font-style:italic;min-height:1.8rem;display:flex;align-items:center;justify-content:center;}
 .istrip.good{color:var(--ok);}.istrip.bad{color:var(--ng);}.istrip.gold{color:var(--gold);}
 
-/* Click hint bar */
+/* Barre d'indices de clic */
 .chint{background:var(--bg2);border:1px solid var(--br);border-radius:4px;padding:.3rem .6rem;font-size:.62rem;color:var(--dim);width:100%;text-align:center;line-height:1.6;}
 .key{display:inline-block;background:var(--bg1);border:1px solid var(--br);border-radius:3px;padding:.02rem .26rem;font-family:'Cinzel',serif;font-size:.54rem;color:var(--gold);}
 
-/* Action bar */
+/* Le barre d'action */
 .abar{display:flex;gap:.5rem;justify-content:center;width:100%;flex-wrap:wrap;}
 
-/* Legend */
+/* La légende */
 .legend{display:flex;gap:.6rem;font-size:.62rem;color:var(--dim);flex-wrap:wrap;justify-content:center;}
 .li{display:flex;align-items:center;gap:.22rem;}
 .ld{width:8px;height:8px;border-radius:2px;border:1px solid;}

@@ -1,9 +1,9 @@
-@import './base.css';         /* Reset, design tokens, body background */
-@import './shared.css';       /* Ornamental divider + shared .btn styles */
-@import './menu.css';         /* Menu screen (#screen-menu)              */
-@import './rules.css';        /* Rules screen (#screen-rules)            */
-@import './setup.css';        /* Setup screen (#screen-setup)            */
-@import './game_layout.css';  /* Game: layout, cards, objectives, units, log */
-@import './game_controls.css';/* Game: turn banner, dice, info strip, abar   */
-@import './game_board.css';   /* Game: board labels, grid, cells, tokens     */
-@import './modals.css';       /* Win modal + initiative overlay              */ 
+@import './base.css';         /* Le reset, les tokens de conception, le fond du corps */
+@import './shared.css';       /* Diviseur ornemental + styles partagés pour .btn */
+@import './menu.css';         /* Écran du menu (#screen-menu)              */
+@import './rules.css';        /* Écran des règles (#screen-rules)            */
+@import './setup.css';        /* Écran de configuration (#screen-setup)            */
+@import './game_layout.css';  /* Jeu: disposition, cartes, objectifs, unités, journal */
+@import './game_controls.css';/* Jeu: barre d'action, dés, bande d'information   */
+@import './game_board.css';   /* Jeu: labels du plateau, grille, cellules, jetons     */
+@import './modals.css';       /* Modal de victoire + superposition d'initiative              */ 
